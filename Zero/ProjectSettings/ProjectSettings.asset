@@ -6,11 +6,11 @@ PlayerSettings:
   serializedVersion: 11
   productGUID: c26e306bca890d046a67afa466e1e510
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: BigRot
   productName: Zero
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -496,7 +496,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: 
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
