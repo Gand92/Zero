@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class OrbitGrid : MonoBehaviour {
 
-    public static float orbitDistance = 0.7f;
-
+    public static float orbitDistance = 0.5f;
 }

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     private GameObject target;
     private Vector3 desiredPosition;
+    private float distance;
     private int orbitNum;
     private float radius;
 
@@ -18,13 +19,12 @@ public class Player : MonoBehaviour
         orbitNum = 1;
         radius = OrbitGrid.orbitDistance * orbitNum;
         target = GameObject.FindGameObjectWithTag("BlackHole");
-        //Debug.Log((int) orbitNum + " " + (transform.position - target.transform.position).normalized + "*" + radius + "+" + target.transform.position);
         transform.position = (transform.position - target.transform.position).normalized * radius + target.transform.position;
     }
 
     void Update()
     {
-        //Debug.Log((transform.position - target.transform.position).normalized + "*" + radius + "+" + target.transform.position);
+        //Modify this with a touch system
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             orbitNum++;
@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
         transform.RotateAround(target.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
         //Smooth change of the radius of the orbit
         desiredPosition = (transform.position - target.transform.position).normalized * radius + target.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, radiusSpeed * Time.deltaTime);
+        distance = Vector3.Distance(transform.position, desiredPosition);
+        Debug.Log(distance);
+        float percentage = distance/OrbitGrid.orbitDistance;
+        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, radiusSpeed * percentage * Time.deltaTime); //velocity is reduced as much as the orbit is close to the new one
     }
 }
