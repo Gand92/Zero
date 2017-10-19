@@ -20,11 +20,6 @@ public class Enemy : MonoBehaviour {
         transform.position = (transform.position - target.transform.position).normalized * radius + target.transform.position;
     }
 
-    void Update()
-    {
-    
-    }
-
     void FixedUpdate()
     {
         //Creating an orbit around the black hole
