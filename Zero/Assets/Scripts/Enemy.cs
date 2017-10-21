@@ -25,4 +25,5 @@ public class Enemy : MonoBehaviour {
         //Creating an orbit around the black hole
         transform.RotateAround(target.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
     }
+
 }
