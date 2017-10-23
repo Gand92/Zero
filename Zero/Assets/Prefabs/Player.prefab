@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5a42dde61bfea41a538bca5b9b4200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 70
+  rotationSpeed: 50
   radiusSpeed: 0.8
 --- !u!198 &198082225822992938
 ParticleSystem:

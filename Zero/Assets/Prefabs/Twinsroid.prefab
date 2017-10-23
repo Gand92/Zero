@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 212932862445572240}
   - component: {fileID: 50411372911386608}
   - component: {fileID: 58828316297307946}
-  - component: {fileID: 114159504090036966}
   m_Layer: 0
   m_Name: Twin
   m_TagString: Untagged
@@ -75,7 +74,6 @@ GameObject:
   - component: {fileID: 212210532588068258}
   - component: {fileID: 50255555294557222}
   - component: {fileID: 58346387406553734}
-  - component: {fileID: 114539250499594646}
   m_Layer: 0
   m_Name: Twin
   m_TagString: Untagged
@@ -259,28 +257,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
---- !u!114 &114159504090036966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1750748110650998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e3e79064062c14283413c2c670e536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114539250499594646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1925785410714038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e3e79064062c14283413c2c670e536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114981205431367142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814c80e5c17f97f44af942566885cc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityRangeVector: {x: 37.053486, y: 63.69955}
+  velocityRangeVector: {x: 11.952117, y: 30.488472}
   minVelocity: 0
   maxVelocity: 0
   twinsSpeed: 100

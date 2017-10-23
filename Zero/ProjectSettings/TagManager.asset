@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BlackHole
   - Twinsroid
+  - Enemy
   layers:
   - Default
   - TransparentFX

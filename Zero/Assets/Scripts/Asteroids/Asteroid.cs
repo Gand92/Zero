@@ -21,16 +21,18 @@ public class Asteroid : MonoBehaviour {
         minVelocity = (int)velocityRangeVector.x;
         maxVelocity = (int)velocityRangeVector.y;
         //Choosing a random orbit
-        orbitNum = Random.Range(2, 6);
+        //orbitNum = Random.Range(5, 10);
+        orbitNum = 10;
         //Choosing a random angular velocity
         rotationSpeed = Random.Range(minVelocity, maxVelocity);
         //Randomly choosing clockwise or counterclockwise movement
         moveDirection = Random.Range(0, 2) * 2 - 1; 
         radius = OrbitGrid.orbitDistance * orbitNum;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
-        //Choosing a starting position, it could be randomize or with SpawnPoints
-        transform.position = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
-        timeBetweenChange = Random.Range(3, 6);
+        //Choosing a starting position, it could be randomize or with SpawnPoints NOW CONTROLLED BY ASTEROIDSPAWNER
+        //transform.position = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
+        //timeBetweenChange = Random.Range(3, 6);
+        timeBetweenChange = 3.0f;
     }
 
     public void FixedUpdate()
@@ -47,22 +49,29 @@ public class Asteroid : MonoBehaviour {
 
     public void ChangeOrbit()
     {
+        //timeBetweenChange -= Time.deltaTime;
+        //if (timeBetweenChange <= 0f)
+        //{
+        //    //Choosing new orbit
+        //    int randomInt = (int)Random.Range(0, 2);
+        //    if (randomInt == 0 && orbitNum > 1)
+        //    {
+        //        orbitNum--;
+        //        radius = OrbitGrid.orbitDistance * orbitNum;
+        //    }
+        //    else
+        //    {
+        //        orbitNum++;
+        //        radius = OrbitGrid.orbitDistance * orbitNum;
+        //    }
+        //    timeBetweenChange = Random.Range(3, 6);
+        //}
         timeBetweenChange -= Time.deltaTime;
-        if (timeBetweenChange <= 0f)
+        if (timeBetweenChange <= 0)
         {
-            //Choosing new orbit
-            int randomInt = (int)Random.Range(0, 2);
-            if (randomInt == 0 && orbitNum > 1)
-            {
-                orbitNum--;
-                radius = OrbitGrid.orbitDistance * orbitNum;
-            }
-            else
-            {
-                orbitNum++;
-                radius = OrbitGrid.orbitDistance * orbitNum;
-            }
-            timeBetweenChange = Random.Range(3, 6);
+            orbitNum--;
+            radius = OrbitGrid.orbitDistance * orbitNum;
+            timeBetweenChange = 3.0f;
         }
         //Smooth change of the radius of the orbit
         Vector3 desiredPosition = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
