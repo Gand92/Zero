@@ -11,7 +11,6 @@ public class DestroyOnCollision : MonoBehaviour {
             Destroy(gameObject.transform.parent.gameObject); //Destroy Twinsroid and Twins
             return;
         }
-        Destroy(collision.gameObject);
         Destroy(gameObject);
     }
 }

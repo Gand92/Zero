@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
-  radiusSpeed: 0.8
+  radiusSpeed: 1.5
 --- !u!198 &198082225822992938
 ParticleSystem:
   m_ObjectHideFlags: 1

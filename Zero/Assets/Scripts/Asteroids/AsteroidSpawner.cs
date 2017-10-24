@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour {
 
+    public float timeBetweenSpawn;
     public GameObject[] asteroidPrefabList = new GameObject[2];
 
     private GameObject centerObject;
-    private float timeBetweenSpawn = 3.0f;
     private int spawnOrbit = 10;
     private float radius;
     private Vector3 desiredPosition;
@@ -25,7 +25,7 @@ public class AsteroidSpawner : MonoBehaviour {
         {
             desiredPosition = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized * radius + centerObject.transform.position;
             Instantiate(asteroidPrefabList[Random.Range(0, asteroidPrefabList.Length)], desiredPosition, Quaternion.identity);
-            timeBetweenSpawn = 3.0f;
+            timeBetweenSpawn = 1.0f;
         }
 	}
 }
