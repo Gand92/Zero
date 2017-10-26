@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 58049335598877708}
   - component: {fileID: 114849310985023828}
   - component: {fileID: 114408943313645082}
+  - component: {fileID: 114328074424371948}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -109,7 +110,19 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.5
+--- !u!114 &114328074424371948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629424263456072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe597c2810711ca43bf9c49fd933707b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 60
 --- !u!114 &114408943313645082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1617e636755eb41b9feb414f7ebd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiusSpeed: 1
-  rotationSpeed: 10
+  radiusSpeed: 3
+  rotationSpeed: 7
 --- !u!198 &198111482532012034
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -346,7 +359,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -853,9 +866,9 @@ ParticleSystem:
           tangentMode: 0
         - serializedVersion: 2
           time: 1
-          value: 0
-          inSlope: -0.11136998
-          outSlope: -0.11136998
+          value: 0.078430176
+          inSlope: -1.5769709
+          outSlope: -1.5769709
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -3539,8 +3552,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 214316a5d8426944785f82e3e1a07106, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

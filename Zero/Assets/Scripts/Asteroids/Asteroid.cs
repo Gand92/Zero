@@ -47,7 +47,7 @@ public class Asteroid : MonoBehaviour {
     public void ChangeSize()
     {
         float distance = Vector3.Distance(transform.position, centerObject.transform.position);
-        if (distance <= 0.5f && progress <= 1) {
+        if (distance <= 2f && progress <= 1) {
             transform.localScale = Vector3.Lerp(initialScale, finalScale, progress);
             progress += Time.deltaTime * timeScale;
         }
