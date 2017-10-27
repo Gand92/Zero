@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusSpeed: 1.5
-  rotationSpeed: 3
+  rotationSpeed: 0
   twinsSpeed: 100
 --- !u!198 &198667500685544338
 ParticleSystem:

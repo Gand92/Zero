@@ -14,7 +14,7 @@ public class Asteroid : MonoBehaviour {
     private Vector3 initialScale;
     private Vector3 finalScale;
     private float progress = 0;
-    private float timeScale = 1.3f;
+    private float timeScale = 1.0f;
 
 
     public void Start()

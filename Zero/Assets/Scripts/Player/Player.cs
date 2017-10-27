@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +13,11 @@ public class Player : MonoBehaviour
     private Vector3 desiredPosition;
     private int orbitNum;
     private float radius;
+    private bool isAccelerating;
 
     void Start()
     {
+        isAccelerating = false;
         orbitNum = 1;
         radius = OrbitGrid.orbitDistance * orbitNum;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
@@ -25,15 +28,13 @@ public class Player : MonoBehaviour
     {
         //Modify this with a touch system
         if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            orbitNum++;
-            radius = OrbitGrid.orbitDistance * orbitNum;
-        }
+            modifyRadius(1);
         if (Input.GetKeyDown(KeyCode.DownArrow) && orbitNum != 1)
-        {
-            orbitNum--;
-            radius = OrbitGrid.orbitDistance * orbitNum;
-        }
+            modifyRadius(-1);
+        if (Input.GetKeyDown(KeyCode.Space))
+            modifySpeed(1);
+        if (Input.GetKeyUp(KeyCode.Space))
+            modifySpeed(-1);
     }
 
     void FixedUpdate()
@@ -56,4 +57,28 @@ public class Player : MonoBehaviour
         float percentage = distance / OrbitGrid.orbitDistance + 0.25f; //+0,25 to avoid percentage = 0
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, radiusSpeed * percentage * Time.deltaTime); //velocity is reduced as much as the orbit is close to the new one
     }
+
+    public void modifyRadius(int num)
+    {
+        if (num == 1)
+            orbitNum++;
+        if (num == -1 && orbitNum > 1)
+            orbitNum--;
+        radius = OrbitGrid.orbitDistance * orbitNum;
+    }
+
+    public void modifySpeed(int num)
+    {
+        if (num == 1)
+        {
+            rotationSpeed += 40f;
+            radiusSpeed += 2.5f;
+        }
+        if (num == -1)
+        {
+            rotationSpeed -= 40f;
+            radiusSpeed -= 2.5f;
+        }
+    }
+
 }

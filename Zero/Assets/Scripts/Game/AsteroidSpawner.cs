@@ -8,7 +8,7 @@ public class AsteroidSpawner : MonoBehaviour {
     public GameObject[] asteroidPrefabList = new GameObject[2];
 
     private GameObject centerObject;
-    private int spawnOrbit = 10;
+    private int spawnOrbit = 12;
     private float radius;
     private Vector3 desiredPosition;
 
