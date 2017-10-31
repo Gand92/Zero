@@ -71,11 +71,13 @@ public class Player : MonoBehaviour
     {
         if (num == 1)
         {
+            isAccelerating = true;
             rotationSpeed += 40f;
             radiusSpeed += 2.5f;
         }
         if (num == -1)
         {
+            isAccelerating = false;
             rotationSpeed -= 40f;
             radiusSpeed -= 2.5f;
         }

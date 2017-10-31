@@ -20,6 +20,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //TODO: Change this to coroutine
         timeBetweenSpawn -= Time.deltaTime;
         if (timeBetweenSpawn <= 0)
         {
