@@ -28,19 +28,19 @@ public class Player : MonoBehaviour
     {
         //Modify this with a touch system
         if (Input.GetKeyDown(KeyCode.UpArrow))
-            modifyRadius(1);
+            ModifyRadius(1);
         if (Input.GetKeyDown(KeyCode.DownArrow) && orbitNum != 1)
-            modifyRadius(-1);
+            ModifyRadius(-1);
         if (Input.GetKeyDown(KeyCode.Space))
-            modifySpeed(1);
+            ModifySpeed(1);
         if (Input.GetKeyUp(KeyCode.Space))
-            modifySpeed(-1);
+            ModifySpeed(-1);
     }
 
     void FixedUpdate()
     {
         Move();
-        ChangeOrbit(); //Change orbit if a key is pressed
+        ChangeOrbit();
     }
 
     public void Move()
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, radiusSpeed * percentage * Time.deltaTime); //velocity is reduced as much as the orbit is close to the new one
     }
 
-    public void modifyRadius(int num)
+    public void ModifyRadius(int num)
     {
         if (num == 1)
             orbitNum++;
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         radius = OrbitGrid.orbitDistance * orbitNum;
     }
 
-    public void modifySpeed(int num)
+    public void ModifySpeed(int num)
     {
         if (num == 1)
         {

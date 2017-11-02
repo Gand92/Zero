@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [System.Serializable]
-public class ButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class TurboHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     private Player playerScript;
     bool _pressed = false;
@@ -29,13 +29,13 @@ public class ButtonHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (_pressed && count == 0)
         {
-            playerScript.modifySpeed(1);
+            playerScript.ModifySpeed(1);
             count += 1;
         }
 
         if(!_pressed && count == 1)
         {
-            playerScript.modifySpeed(-1);
+            playerScript.ModifySpeed(-1);
             count -= 1;
         }
 
