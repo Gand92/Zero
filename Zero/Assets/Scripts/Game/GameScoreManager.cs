@@ -12,7 +12,7 @@ public class GameScoreManager : MonoBehaviour {
 
     private void Start()
     {
-        SetScoreCounter(0);
+        scoreText.text = "0";
     }
 
     private void Update()
@@ -20,14 +20,16 @@ public class GameScoreManager : MonoBehaviour {
         timePassed += Time.deltaTime;
         if (timePassed >= 1)
         {
-            score += (int)timePassed;
-            SetScoreCounter(score);
+            //score += (int)timePassed;
+            //SetScoreCounter(score);
+            AddToScore((int)timePassed);
             timePassed -= (int)timePassed;
         }
     }
 
-    private void SetScoreCounter(int score)
+    public void AddToScore(int value)
     {
+        score += value;
         scoreText.text = score.ToString();
     }
 

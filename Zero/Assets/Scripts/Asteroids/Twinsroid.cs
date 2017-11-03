@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Twinsroid : Asteroid {
+public class Twinsroid : PulledObject {
 
     public float twinsSpeed;
     private Transform[] Twins;

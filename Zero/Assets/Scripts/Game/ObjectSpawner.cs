@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidSpawner : MonoBehaviour {
+public class ObjectSpawner : MonoBehaviour {
 
+    public GameObject[] prefabList = new GameObject[2];
+    public int spawnOrbit = 14;
     public float timeBetweenSpawn;
-    public GameObject[] asteroidPrefabList = new GameObject[2];
 
     private GameObject centerObject;
-    private int spawnOrbit = 12;
     private float radius;
     private Vector3 desiredPosition;
 
@@ -16,17 +16,16 @@ public class AsteroidSpawner : MonoBehaviour {
 	void Start () {
         radius = OrbitGrid.orbitDistance * spawnOrbit;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
+        StartCoroutine(SpawnObject());
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //TODO: Change this to coroutine
-        timeBetweenSpawn -= Time.deltaTime;
-        if (timeBetweenSpawn <= 0)
+
+    IEnumerator SpawnObject()
+    {
+        while (true)
         {
             desiredPosition = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized * radius + centerObject.transform.position;
-            Instantiate(asteroidPrefabList[Random.Range(0, asteroidPrefabList.Length)], desiredPosition, Quaternion.identity);
-            timeBetweenSpawn = 1.0f;
+            Instantiate(prefabList[Random.Range(0, prefabList.Length)], desiredPosition, Quaternion.identity);
+            yield return new WaitForSeconds(timeBetweenSpawn);
         }
-	}
+    }
 }

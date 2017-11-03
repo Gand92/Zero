@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour {
+public class PulledObject : MonoBehaviour {
 
-    [Header("Asteroid Velocity")]
+    [Header("Object Velocity")]
     public float radiusSpeed;
     public float rotationSpeed;
     [Space(3)]
