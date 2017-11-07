@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class TurboHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+
+    [Header("Fuel Info")]
+    public Image fuel_image;
 
     private Player playerScript;
     bool _pressed = false;
     int count;
 
-    void Start()
+    private FuelHandler fuelHandler;
+    private float fuelSpeedConsumption;
+    private float fuelSpeedRecharge;
+
+    void Awake()
     {
+        count = 0;
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        fuelHandler = fuel_image.GetComponent<FuelHandler>();
+        fuelSpeedConsumption = playerScript.GetFuelSpeedConsumption();
+        fuelSpeedRecharge = playerScript.GetFuelSpeedRecharge();
     }
     
     public void OnPointerDown(PointerEventData eventData)
@@ -27,16 +39,30 @@ public class TurboHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     void Update()
     {
-        if (_pressed && count == 0)
+        if (_pressed)
         {
-            playerScript.ModifySpeed(1);
-            count += 1;
+
+            if (count == 0)
+            {
+                playerScript.ModifySpeed(1);
+                count += 1;
+            }
+            fuelHandler.ConsumeFuel(fuelSpeedConsumption * Time.deltaTime);
+            if (fuelHandler.GetCurrentFuel() == 0 && count == 1)
+            {
+                playerScript.ModifySpeed(-1);
+                count -= 1;
+            }
         }
 
-        if(!_pressed && count == 1)
+        if(!_pressed)
         {
-            playerScript.ModifySpeed(-1);
-            count -= 1;
+            if (count == 1)
+            {
+                playerScript.ModifySpeed(-1);
+                count -= 1;
+            }
+            fuelHandler.RestoreFuel(fuelSpeedRecharge * Time.deltaTime); //We have another update in player with the same line, this is the only one needed on release on smartphone
         }
 
 

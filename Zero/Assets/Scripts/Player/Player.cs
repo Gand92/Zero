@@ -2,28 +2,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("Velocity Info")]
     public float rotationSpeed;
     public float radiusSpeed;
+    [Header("Fuel Info")]
+    public Image fuel_image;
+    public float fuelSpeedConsumption;
+    public float fuelSpeedRecharge;
 
     private GameObject centerObject;
     private Vector3 desiredPosition;
     private int orbitNum;
     private float radius;
-    private bool isAccelerating;
     private bool hasShield;
+    private FuelHandler fuelHandler;
+    private float count;
 
-    void Start()
+    void Awake()
     {
-        isAccelerating = false;
+        count = 0;
         hasShield = false;
         orbitNum = 1;
         radius = OrbitGrid.orbitDistance * orbitNum;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
         transform.position = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
+        fuelHandler = fuel_image.GetComponent<FuelHandler>();
     }
 
     void Update()
@@ -33,10 +40,27 @@ public class Player : MonoBehaviour
             ModifyRadius(1);
         if (Input.GetKeyDown(KeyCode.DownArrow) && orbitNum != 1)
             ModifyRadius(-1);
-        if (Input.GetKeyDown(KeyCode.Space))
-            ModifySpeed(1);
-        if (Input.GetKeyUp(KeyCode.Space))
-            ModifySpeed(-1);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (count == 0)
+            {
+                ModifySpeed(1);
+                count += 1;
+            }
+            fuelHandler.ConsumeFuel(fuelSpeedConsumption * Time.deltaTime);
+            if (fuelHandler.GetCurrentFuel() == 0 && count == 1)
+            {
+                ModifySpeed(-1);
+                count -= 1;
+            }
+        } else {
+            if (count == 1)
+            {
+                ModifySpeed(-1);
+                count -= 1;
+            }
+            fuelHandler.RestoreFuel(fuelSpeedRecharge * Time.deltaTime); //We have another update in Turbo Handler with the same line, this one has to be removed on release on smartphone
+        }
     }
 
     void FixedUpdate()
@@ -69,17 +93,16 @@ public class Player : MonoBehaviour
         radius = OrbitGrid.orbitDistance * orbitNum;
     }
 
+    //Used for turbo
     public void ModifySpeed(int num)
     {
         if (num == 1)
         {
-            isAccelerating = true;
             rotationSpeed += 40f;
             radiusSpeed += 2.5f;
         }
         if (num == -1)
         {
-            isAccelerating = false;
             rotationSpeed -= 40f;
             radiusSpeed -= 2.5f;
         }
@@ -93,6 +116,16 @@ public class Player : MonoBehaviour
     public void toggleShield()
     {
         hasShield = !hasShield;
+    }
+
+    public float GetFuelSpeedConsumption()
+    {
+        return fuelSpeedConsumption;
+    }
+
+    public float GetFuelSpeedRecharge()
+    {
+        return fuelSpeedRecharge;
     }
 
 }
