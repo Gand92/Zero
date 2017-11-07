@@ -14,10 +14,12 @@ public class Player : MonoBehaviour
     private int orbitNum;
     private float radius;
     private bool isAccelerating;
+    private bool hasShield;
 
     void Start()
     {
         isAccelerating = false;
+        hasShield = false;
         orbitNum = 1;
         radius = OrbitGrid.orbitDistance * orbitNum;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
@@ -81,6 +83,16 @@ public class Player : MonoBehaviour
             rotationSpeed -= 40f;
             radiusSpeed -= 2.5f;
         }
+    }
+
+    public bool IsShielded()
+    {
+        return hasShield;
+    }
+
+    public void toggleShield()
+    {
+        hasShield = !hasShield;
     }
 
 }

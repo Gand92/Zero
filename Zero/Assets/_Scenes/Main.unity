@@ -1958,7 +1958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 1386505816225972, guid: 8c07a3a4a4f98f54c8a41cb34470b24f, type: 2}
+  - {fileID: 1377313760651600, guid: 968df7a8f53611c408eb5e6f73c6e100, type: 2}
+  - {fileID: 1377313760651600, guid: 968df7a8f53611c408eb5e6f73c6e100, type: 2}
   spawnOrbit: 14
   timeBetweenSpawn: 5
 --- !u!4 &1223300962

@@ -6,6 +6,8 @@ public class DestroyOnCollision : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        //WARNING Asteroids are currently not destroyed when hitting a pickup. Good or Bad? :S
+        if (!collision.gameObject.CompareTag("Pickup"))
+            Destroy(gameObject);
     }
 }
