@@ -17,7 +17,7 @@ public class DestroyPlayer : MonoBehaviour {
         /* There is a little bug when the player fly very fast! If he hits an asteroid when shielded, sometimes even this trigger will shoot. *
          * So we need to check if the player is shielded or not in order to prevent his destruction when shielded.                            *
          * NB: we don't need to call again toggleShield() because it's already called in ShiedlCollisionHandler                               */
-        if (!collision.gameObject.CompareTag("Pickup") && !playerScript.IsShielded())
+        if (collision.gameObject.CompareTag("Enemy") && !playerScript.IsShielded())
         {
             game_manager.GameOver();
             Destroy(gameObject);

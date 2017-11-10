@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldCollisionHandler : MonoBehaviour {
+public class ReverseField : MonoBehaviour {
 
     private Player playerScript;
 
-    private void Awake()
+    private void Start()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            playerScript.toggleShield();
-            Debug.Log("Shield on = " + playerScript.IsShielded());
-            Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerScript.ChangeDirection();
         }
     }
 }

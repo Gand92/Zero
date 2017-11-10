@@ -16,14 +16,17 @@ public class Player : MonoBehaviour
 
     private GameObject centerObject;
     private Vector3 desiredPosition;
+    private FuelHandler fuelHandler;
+    private SpriteRenderer sprite_renderer;
     private int orbitNum;
     private float radius;
     private bool hasShield;
-    private FuelHandler fuelHandler;
     private float count;
+    private int movementDirection;
 
     void Awake()
     {
+        movementDirection = 1;
         count = 0;
         hasShield = false;
         orbitNum = 1;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
         transform.position = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
         fuelHandler = fuel_image.GetComponent<FuelHandler>();
+        sprite_renderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -72,7 +76,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         //Creating an orbit around the black hole
-        transform.RotateAround(centerObject.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+        transform.RotateAround(centerObject.transform.position, Vector3.forward, rotationSpeed * Time.deltaTime * movementDirection);
     }
 
     public void ChangeOrbit()
@@ -106,6 +110,12 @@ public class Player : MonoBehaviour
             rotationSpeed -= 40f;
             radiusSpeed -= 2.5f;
         }
+    }
+
+    public void ChangeDirection()
+    {
+        movementDirection *= -1;
+        sprite_renderer.flipX = !sprite_renderer.flipX;
     }
 
     public bool IsShielded()
