@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour {
 
-    public GameObject[] prefabList = new GameObject[2];
+    public PooledObject[] pooledList = new PooledObject[2];
     public int spawnOrbit = 14;
     public float timeBetweenSpawn;
 
@@ -24,8 +24,13 @@ public class ObjectSpawner : MonoBehaviour {
         while (true)
         {
             desiredPosition = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized * radius + centerObject.transform.position;
-            Instantiate(prefabList[Random.Range(0, prefabList.Length)], desiredPosition, Quaternion.identity);
+            PooledObject prefab = pooledList[Random.Range(0, pooledList.Length)];
+            if (prefab)
+            {
+                prefab.GetPooledInstance<PooledObject>(desiredPosition);
+            }
             yield return new WaitForSeconds(timeBetweenSpawn);
         }
     }
+
 }

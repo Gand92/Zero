@@ -1225,8 +1225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4edf1f1e05dd24e9d8c67cfd8cabf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabList:
-  - {fileID: 1629424263456072, guid: 902453e50886de2488da1358ae32e91c, type: 2}
+  pooledList:
+  - {fileID: 114849310985023828, guid: 902453e50886de2488da1358ae32e91c, type: 2}
   spawnOrbit: 14
   timeBetweenSpawn: 1.5
 --- !u!1 &930596958
@@ -2106,11 +2106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4edf1f1e05dd24e9d8c67cfd8cabf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabList:
-  - {fileID: 1377313760651600, guid: 968df7a8f53611c408eb5e6f73c6e100, type: 2}
-  - {fileID: 1377313760651600, guid: 968df7a8f53611c408eb5e6f73c6e100, type: 2}
+  pooledList:
+  - {fileID: 114332721464166910, guid: 8c07a3a4a4f98f54c8a41cb34470b24f, type: 2}
+  - {fileID: 114837650974163852, guid: 968df7a8f53611c408eb5e6f73c6e100, type: 2}
   spawnOrbit: 14
-  timeBetweenSpawn: 5
+  timeBetweenSpawn: 4
 --- !u!4 &1223300962
 Transform:
   m_ObjectHideFlags: 0
@@ -2368,7 +2368,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

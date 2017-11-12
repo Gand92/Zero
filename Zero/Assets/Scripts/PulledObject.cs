@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PulledObject : MonoBehaviour {
+public class PulledObject : PooledObject {
 
     [Header("Object Velocity")]
     public float radiusSpeed;
@@ -50,6 +50,11 @@ public class PulledObject : MonoBehaviour {
         if (distance <= 2f && progress <= 1) {
             transform.localScale = Vector3.Lerp(initialScale, finalScale, progress);
             progress += Time.deltaTime * timeScale;
+        }
+        if (distance > 2f)
+        {
+            transform.localScale = initialScale;
+            progress = 0;
         }
     }
 

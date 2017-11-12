@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212125311179782922}
   - component: {fileID: 50703680984528196}
   - component: {fileID: 58417759736683154}
+  - component: {fileID: 114837650974163852}
   - component: {fileID: 114201993683083360}
   - component: {fileID: 114316488642004236}
-  - component: {fileID: 114837650974163852}
   m_Layer: 0
   m_Name: Shield Pickup
   m_TagString: Pickup
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377313760651600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 6.8480387, y: -27.149666, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

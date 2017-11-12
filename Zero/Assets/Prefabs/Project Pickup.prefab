@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212931127001782372}
   - component: {fileID: 50509044197386500}
   - component: {fileID: 58568074466358778}
+  - component: {fileID: 114332721464166910}
   - component: {fileID: 114375522321657154}
   - component: {fileID: 114488553112799286}
-  - component: {fileID: 114332721464166910}
   m_Layer: 0
   m_Name: Project Pickup
   m_TagString: Pickup

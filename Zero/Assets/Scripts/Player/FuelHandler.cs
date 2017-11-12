@@ -7,17 +7,20 @@ using UnityEngine.UI;
 public class FuelHandler : MonoBehaviour {
 
     private Image fuel_bar;
+    private Color start_color;
     private float maxfuel = 100;
     private float currentfuel = 100;
 
 	private void Awake()
     {
         fuel_bar = gameObject.GetComponent<Image>();
+        start_color = fuel_bar.color;
     }
 	
 	private void UpdateFuelBar () {
         float ratio = currentfuel / maxfuel;
         fuel_bar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        fuel_bar.color = Color.Lerp(start_color, Color.red, 1 - ratio);
 	}
 
     public void ConsumeFuel(float value)
