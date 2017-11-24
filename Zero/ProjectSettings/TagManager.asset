@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - BlackHole
-  - Twinsroid
   - Enemy
   - GM
   - Pickup
+  - Field
+  - Twin
   layers:
   - Default
   - TransparentFX

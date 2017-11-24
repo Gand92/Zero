@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour {
     List<PooledObject> availableObjects = new List<PooledObject>();
     PooledObject prefab;
 
-    public PooledObject GetObject(Vector3 position)
+    public PooledObject GetObject()
     {
         PooledObject obj;
         int lastAvailableIndex = availableObjects.Count - 1;
@@ -15,12 +15,12 @@ public class ObjectPool : MonoBehaviour {
         {
             obj = availableObjects[lastAvailableIndex];
             availableObjects.RemoveAt(lastAvailableIndex);
-            obj.gameObject.transform.position = position;
             obj.gameObject.SetActive(true);
         }
         else
         {
-            obj = Instantiate(prefab, position, Quaternion.identity);
+            //Instantiate at random position to prevent premature destruction, the object will be move as soon as he will be returned from this function
+            obj = Instantiate(prefab, new Vector3(0, 0, Random.Range(10, 20)), Quaternion.identity); 
             obj.transform.SetParent(transform, false);
             obj.Pool = this;
         }

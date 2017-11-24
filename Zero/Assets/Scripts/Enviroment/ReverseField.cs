@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReverseField : MonoBehaviour {
+public class ReverseField : PooledObject {
 
     private Player playerScript;
 

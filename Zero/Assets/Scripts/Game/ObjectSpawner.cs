@@ -12,7 +12,6 @@ public class ObjectSpawner : MonoBehaviour {
     private float radius;
     private Vector3 desiredPosition;
 
-	// Use this for initialization
 	void Start () {
         radius = OrbitGrid.orbitDistance * spawnOrbit;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
@@ -23,11 +22,17 @@ public class ObjectSpawner : MonoBehaviour {
     {
         while (true)
         {
-            desiredPosition = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized * radius + centerObject.transform.position;
             PooledObject prefab = pooledList[Random.Range(0, pooledList.Length)];
+            PooledObject objectSpawned;
+            if (prefab.CompareTag("Field"))
+            {
+                radius = OrbitGrid.orbitDistance * Random.Range(1, spawnOrbit);
+            }
+            desiredPosition = (new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)).normalized * radius + centerObject.transform.position;
             if (prefab)
             {
-                prefab.GetPooledInstance<PooledObject>(desiredPosition);
+                objectSpawned = prefab.GetPooledInstance<PooledObject>();
+                objectSpawned.transform.position = desiredPosition;
             }
             yield return new WaitForSeconds(timeBetweenSpawn);
         }

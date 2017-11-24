@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public float rotationSpeed;
     public float radiusSpeed;
     [Header("Fuel Info")]
-    public Image fuel_image;
     public float fuelSpeedConsumption;
     public float fuelSpeedRecharge;
 
@@ -33,7 +32,7 @@ public class Player : MonoBehaviour
         radius = OrbitGrid.orbitDistance * orbitNum;
         centerObject = GameObject.FindGameObjectWithTag("BlackHole");
         transform.position = (transform.position - centerObject.transform.position).normalized * radius + centerObject.transform.position;
-        fuelHandler = fuel_image.GetComponent<FuelHandler>();
+        fuelHandler = GetComponent<FuelHandler>();
         sprite_renderer = GetComponent<SpriteRenderer>();
     }
 

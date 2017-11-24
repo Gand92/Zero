@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58158523397680686}
   - component: {fileID: 114822007523393830}
   - component: {fileID: 114370945783218014}
+  - component: {fileID: 114295649043834564}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -110,6 +111,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114295649043834564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386336505029486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618418a7eb9a7804f9bba34f0e365a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuel_bar: {fileID: 0}
 --- !u!114 &114370945783218014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   radiusSpeed: 7
+  fuelSpeedConsumption: 20
+  fuelSpeedRecharge: 5
 --- !u!198 &198082225822992938
 ParticleSystem:
   m_ObjectHideFlags: 1

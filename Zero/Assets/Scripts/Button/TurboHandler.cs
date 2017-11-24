@@ -7,9 +7,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class TurboHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-    [Header("Fuel Info")]
-    public Image fuel_image;
-
+    private GameObject playerObject;
     private Player playerScript;
     bool _pressed = false;
     int count;
@@ -21,8 +19,9 @@ public class TurboHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     void Awake()
     {
         count = 0;
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        fuelHandler = fuel_image.GetComponent<FuelHandler>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerScript = playerObject.GetComponent<Player>();
+        fuelHandler = playerObject.GetComponent<FuelHandler>();
         fuelSpeedConsumption = playerScript.GetFuelSpeedConsumption();
         fuelSpeedRecharge = playerScript.GetFuelSpeedRecharge();
     }
